@@ -5,6 +5,8 @@ services :
     build: ./mysql
     ports:
       - "33060:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
 
   redis:
     build: ./redis
@@ -14,5 +16,5 @@ services :
   golang:
     build: ./golang
     ports:
-      - "8080:80"
+      - "8080:8080"
 
