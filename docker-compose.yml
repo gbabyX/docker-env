@@ -14,7 +14,12 @@ services :
       - "6379:6379"
 
   golang:
-    build: ./golang
+    build: 
+      context: ./golang
     ports:
       - "8080:8080"
+    volumes:
+      - ${PROJECT_SRC}:/var/www
+    environment:
+      - PORT=8080
 

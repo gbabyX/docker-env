@@ -1,9 +1,8 @@
 FROM golang:latest
 
-RUN mkdir -p /go/src/app
-COPY app.go /go/src/app
-WORKDIR /go/src/app
+ARG PROJECT_DIR=/var/www
+RUN mkdir -p ${PROJECT_DIR}
+WORKDIR ${PROJECT_DIR}
 RUN go get -u github.com/gin-gonic/gin
-RUN go build /go/src/app/app.go
+ENTRYPOINT [ "go","run","/var/www/main.go"]
 EXPOSE 8080
-CMD ["./app"]
