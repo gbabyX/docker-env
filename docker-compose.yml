@@ -34,7 +34,7 @@ services :
     volumes:
       - "${NGINX_CONF_DIR}:/etc/nginx/conf.d"
       - "${WORDPRESS_DIR}:/var/www"
-
+      - "${NGINX_LOGS_DIR}:/var/log/nginx"
   php:
     build: ./php
     ports:
