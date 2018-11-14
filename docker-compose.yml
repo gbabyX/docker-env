@@ -36,7 +36,11 @@ services :
       - "${WORDPRESS_DIR}:/var/www"
       - "${NGINX_LOGS_DIR}:/var/log/nginx"
   php:
-    build: ./php
+    build: 
+      context: ./php
+      args:
+        - PHP_EXT_MYSQLI=${PHP_EXT_MYSQLI}
+        - PHP_EXT_REDIS=${PHP_EXT_REDIS}
     ports:
       - "9000:9000"
     volumes:
