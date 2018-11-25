@@ -18,6 +18,11 @@ RUN if [ ${PHP_EXT_REDIS} = true]; then \
 	docker-php-ext-install redis \
 ;fi
 
+ARG PHP_EXT_PDO_MYSQL=false
+
+RUN if [ ${PHP_EXT_PDO_MYSQL} = true ]; then \
+    docker-php-ext-install pdo_mysql \
+;fi
 
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
