@@ -33,7 +33,7 @@ services :
       - "php"
     volumes:
       - "${NGINX_CONF_DIR}:/etc/nginx/conf.d"
-      - "${WORDPRESS_DIR}:/var/www"
+      - "${PROJECT_ROOT_DIR}:/var/www"
       - "${NGINX_LOGS_DIR}:/var/log/nginx"
   php:
     build: 
@@ -42,8 +42,9 @@ services :
         - PHP_EXT_MYSQLI=${PHP_EXT_MYSQLI}
         - PHP_EXT_REDIS=${PHP_EXT_REDIS}
         - PHP_EXT_PDO_MYSQL=${PHP_EXT_PDO_MYSQL}
+        - PHP_VERSION=${PHP_VERSION}
     ports:
       - "9000:9000"
     volumes:
-      - "${WORDPRESS_DIR}:/var/www"
+      - "${PROJECT_ROOT_DIR}:/var/www"
 
